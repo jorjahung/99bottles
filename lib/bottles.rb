@@ -10,7 +10,7 @@ class Bottles
   end
 
   def first_line(number)
-    "#{number} #{bottle_or_bottles(number)} of beer on the wall, #{number} #{bottle_or_bottles(number)} of beer."
+    "#{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer."
   end
 
   def second_line(number)
