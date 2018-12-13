@@ -5,12 +5,12 @@ class Bottles
   def verse(number)
     <<-VERSE
 #{first_line(number)}
-#{second_line(number - 1)}
+#{go_to_the_store?(number - 1)}
     VERSE
   end
 
   def first_line(number)
-    "#{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer."
+    "#{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer.".capitalize
   end
 
   def second_line(number)
@@ -27,5 +27,13 @@ class Bottles
 
   def number_or_no_more(number)
     number == 0 ? 'no more' : number
+  end
+
+  def go_to_the_store?(number)
+    if number == -1
+      "Go to the store and buy some more, 99 bottles of beer on the wall."
+    else
+      second_line(number)
+    end
   end
 end
