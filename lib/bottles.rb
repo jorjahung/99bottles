@@ -2,10 +2,10 @@ class Bottles
   def initialize
   end
 
-  def verse(number)
+  def verse(start, stop: start - 1)
     <<-VERSE
-#{first_line(number)}
-#{go_to_the_store?(number - 1)}
+#{first_line(start)}
+#{go_to_the_store?(stop)}
     VERSE
   end
 
