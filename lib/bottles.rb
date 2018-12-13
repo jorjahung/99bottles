@@ -1,10 +1,25 @@
 class Bottles
-  def initialize
+  def song
+    verses(99,0)
   end
 
-  def verse(start, stop: start - 1)
-    "#{first_line(start)}\n" + "#{go_to_the_store?(stop)}\n"
+  def verses(start, stop)
+    count = start
+    song = []
+
+    while count >= stop
+      song << verse(count)
+      count -= 1
+    end
+
+    song.join("\n")
   end
+
+  def verse(number)
+    "#{first_line(number)}\n" + "#{go_to_the_store?(number - 1)}\n"
+  end
+
+  private
 
   def first_line(number)
     "#{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer.".capitalize
