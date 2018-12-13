@@ -1,4 +1,9 @@
 class Bottles
+  attr_accessor :number
+  def initialize
+    @number = nil
+  end
+
   def song
     verses(99,0)
   end
@@ -16,36 +21,39 @@ class Bottles
   end
 
   def verse(number)
-    "#{first_line(number)}\n" + "#{go_to_the_store?(number - 1)}\n"
+    @number = number
+    "#{first_line}\n" + "#{go_to_the_store?}\n"
   end
 
   private
 
-  def first_line(number)
-    "#{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer.".capitalize
+  def first_line
+    "#{number_or_no_more} #{bottle_or_bottles} of beer on the wall, #{number_or_no_more} #{bottle_or_bottles} of beer.".capitalize
   end
 
-  def second_line(number)
-    "Take #{one_or_it(number)} down and pass it around, #{number_or_no_more(number)} #{bottle_or_bottles(number)} of beer on the wall."
+  def second_line
+    "Take #{one_or_it} down and pass it around, #{number_or_no_more} #{bottle_or_bottles} of beer on the wall."
   end
 
-  def bottle_or_bottles(number)
+  def bottle_or_bottles
     number != 1 ? 'bottles' : 'bottle'
   end
 
-  def one_or_it(number)
+  def one_or_it
     number == 0 ? 'it' : 'one'
   end
 
-  def number_or_no_more(number)
+  def number_or_no_more
     number == 0 ? 'no more' : number
   end
 
-  def go_to_the_store?(number)
+  def go_to_the_store?
+    @number -= 1
+
     if number == -1
       "Go to the store and buy some more, 99 bottles of beer on the wall."
     else
-      second_line(number)
+      second_line
     end
   end
 end
