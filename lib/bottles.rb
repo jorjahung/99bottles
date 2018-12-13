@@ -3,10 +3,7 @@ class Bottles
   end
 
   def verse(start, stop: start - 1)
-    <<-VERSE
-#{first_line(start)}
-#{go_to_the_store?(stop)}
-    VERSE
+    "#{first_line(start)}\n" + "#{go_to_the_store?(stop)}\n"
   end
 
   def first_line(number)
