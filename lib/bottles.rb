@@ -1,7 +1,7 @@
 class Bottles
-  attr_accessor :number
+  attr_accessor :number_of_beers
   def initialize
-    @number = nil
+    @number_of_beers = nil
   end
 
   def song
@@ -20,8 +20,8 @@ class Bottles
     song.join("\n")
   end
 
-  def verse(number)
-    @number = number
+  def verse(count)
+    @number_of_beers = count
     "#{first_line}\n" + "#{go_to_the_store?}\n"
   end
 
@@ -36,21 +36,21 @@ class Bottles
   end
 
   def bottle_or_bottles
-    number != 1 ? 'bottles' : 'bottle'
+    number_of_beers != 1 ? 'bottles' : 'bottle'
   end
 
   def one_or_it
-    number == 0 ? 'it' : 'one'
+    number_of_beers == 0 ? 'it' : 'one'
   end
 
   def number_or_no_more
-    number == 0 ? 'no more' : number
+    number_of_beers == 0 ? 'no more' : @number_of_beers
   end
 
   def go_to_the_store?
-    @number -= 1
+    @number_of_beers -= 1
 
-    if number == -1
+    if number_of_beers == -1
       "Go to the store and buy some more, 99 bottles of beer on the wall."
     else
       second_line
